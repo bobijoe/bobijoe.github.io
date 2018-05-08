@@ -1,0 +1,12 @@
+{
+  "name": "20-website",
+  "version": "1.0",
+  "description": "My website.",
+  "repository": "https://github.com/bobijoe/bobijoe.github.io",
+  "homepage": "https://bobijoe.github.io/",
+  "author": "Erik Tomten <23erik.tomten@boiseschools.net>",
+  "dependencies": {
+    "p5.js": ">=0.5.6"
+  },
+  "main": "index"
+}

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+
+<!-- Built by Erik Tomten -->
+<html>
+  
+  
+  
+<head>
+  <title> Timeline - Erik's 20% Project </title>
+
+  <link rel="stylesheet" type="text/css" href="styles.css"/>
+
+  <!-- Fonts: also look in styles.css -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+  <!-- Tab icon: -->
+  <link rel="icon" href="https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_keyboard_arrow_right_48px-512.png">
+  
+  <!-- So I can use VW -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <script language="javascript" type="text/javascript" src="libraries/p5.js"></script>
+</head>
+
+<body>
+  <div class="top-menu">
+      <a href="index.html">Home</a>
+      <a href="timeline.html" class="here">Timeline</a>
+      <a href="projects.html">Projects</a>
+  </div>
+  <div style="height: 3.7vh;"></div>
+  
+  <div class="list-2" style="display: inline-block; margin-top: -0.15vh;">
+    <div class="heading-left">
+      <h2>October Goals</h2>
+    </div>
+    <div class="heading-right">
+      <p class="heading" style="margin-top: 0.9vh;">During October I would like to find a language I like and practice it. I also want to get started on the website.</p>
+    </div>
+  </div>
+  
+  <div class="list-1" style="display: inline-block; margin-top: -0.4vh;">
+    <div class="heading-left">
+      <h2>November Goals</h2>
+    </div>
+    <div class="heading-right">
+      <p class="heading" style="margin-top: 0.9vh;">In November I need to finish the website and start work on a game.</p>
+    </div>
+  </div>
+  
+  <div class="list-2" style="display: inline-block; margin-top: -0.4vh;">
+    <div class="heading-left">
+      <h2>December Goals</h2>
+    </div>
+    <div class="heading-right">
+      <p class="heading" style="margin-top: 0.9vh;">During December I would like to make more programs as practice.</p>
+    </div>
+  </div>
+  
+  <div class="list-1" style="display: inline-block; margin-top: -0.4vh;">
+    <div class="heading-left">
+      <h2>January Goals</h2>
+    </div>
+    <div class="heading-right">
+      <p class="heading" style="margin-top: 0.9vh;">In January, I will start work on final game and do some smaller projects.</p>
+    </div>
+  </div>
+  
+  <div class="list-2" style="display: inline-block; margin-top: -0.4vh;">
+    <div class="heading-left">
+      <h2>February Goals</h2>
+    </div>
+    <div class="heading-right">
+      <p class="heading" style="margin-top: 0.9vh;">I will have at least 10 levels and complete a smaller game.</p>
+    </div>
+  </div>
+  
+  <div class="list-1" style="display: inline-block; margin-top: -0.45vh;">
+    <div class="heading-left">
+      <h2>March Goals</h2>
+    </div>
+    <div class="heading-right">
+      <p class="heading" style="margin-top: 0.9vh;">During March I would like to finish the final game, fix older projects, and publish the website.</p>
+    </div>
+  </div>
+  
+  <script>
+    var txtArea = 0;
+    var txtSpots = [];
+    var vehicles = [];
+    var radius;
+
+    function setup() {
+      createCanvas(windowWidth, windowHeight / 1.9);
+      background(0);
+
+      radius = height / 25;
+
+      textSize(windowWidth / 4);
+
+      pixelDensity(1);
+
+
+      fill(255);
+      textAlign(CENTER, CENTER);
+
+      text("Goals", 0, 0, width, height);
+
+      loadPixels();
+      for (var y = 0; y < height; y++) {
+        for (var x = 0; x < width; x++) {
+          var index = (x + y * width) * 4;
+          var r = pixels[index + 0];
+          var g = pixels[index + 1];
+          var b = pixels[index + 2];
+
+          if (r + g + b === 255 * 3) { // If r, g, and b == 255
+            txtArea += 1;
+            txtSpots.push(createVector(x, y));
+            if (txtSpots.length % round(15 * radius) == 0) {
+              vehicles.push(new Vehicle(txtSpots[txtSpots.length - 1], radius));
+            }
+            //vehicles.push(new Vehicle(txtSpots[txtSpots.length - 1], 1));
+          }
+        }
+      }
+    }
+
+    function draw() {
+      background(255, 255, 255, 85);
+
+      for (var i = 0; i < vehicles.length; i++) {
+        vehicles[i].follow();
+        vehicles[i].flee();
+        vehicles[i].update();
+        vehicles[i].show();
+      }
+    }
+  </script>
+  <script>
+    function Vehicle(target_, r_){
+      this.pos = createVector(random(width), random(height));
+      this.posO = this.pos; // Orighional pos
+      this.vel = createVector(0, 0);
+      this.t = target_;
+      this.r = r_;
+
+      this.follow = function() {
+        var change = createVector(this.t.x - this.pos.x, this.t.y - this.pos.y);
+        this.vel.add(change);
+        this.vel.setMag(3 * (this.r / 4));
+      }
+
+      this.flee = function() {
+        var d = dist(this.pos.x, this.pos.y, mouseX, mouseY);
+        if (d <= random(this.r * 5, this.r * 10)) {
+          var fleeVector = createVector(this.pos.x - mouseX, this.pos.y - mouseY);
+          fleeVector.setMag(random(this.r, 2 * this.r));
+          this.vel.add(fleeVector);
+        }
+      }
+
+      this.update = function() {
+        this.pos.add(this.vel);
+      }
+
+      this.show = function() {
+        strokeWeight(this.r);
+        stroke(31, 49, 83);
+
+        point(this.pos.x, this.pos.y);
+      }
+    }
+  </script>
+  
+</body>
+  
+  
+  
+</html>

@@ -1,0 +1,164 @@
+/* Defaults: */
+
+body {
+  background-color: #FFFFFF;
+  
+  font-family: 'Roboto', sans-serif;
+  
+  border: none;
+  
+  margin: 0vw;
+}
+
+
+
+/* Links: */
+
+a {
+  color: #5373B0;
+  
+  text-decoration: none;
+  
+  font-size: 1.95vh; /* 1vw */
+}
+
+a:hover {
+  color: #688ACC;
+}
+
+a:active {
+  color: #37558e;
+}
+
+a.here {
+  color: #37558e;
+}
+
+
+
+/* Top Menu: */
+
+div.top-menu {
+  background-color: #1F3153;
+  
+  position: fixed;
+  top: 0vh;
+  left: 0vw;
+  
+  width: 100vw;
+  
+  text-align: center;
+  line-height: 2;
+  word-spacing: 0.6vw;
+}
+
+div.bottom-menu {
+  background-color: #1F3153;
+  
+  position: fixed;
+  bottom: 0vh;
+  left: 0vw;
+  
+  width: 100vw;
+  
+  text-align: left;
+  line-height: 1.5;
+}
+
+
+
+/* Text: */
+
+h1 {
+  color: #2B3D61;
+  
+  line-height: 1.5;
+  
+  margin: 0vw;
+  margin-left: 0.5vw;
+  margin-right: 0.5vw;
+  
+  font-size: 4.39vh; /* 2.25vw */
+}
+
+h2 {
+  color: #FFFFFF;
+  
+  line-height: 1.5;
+  
+  margin: 0vw;
+  margin-left: 0.5vw;
+  margin-right: 0.5vw;
+  height: auto;
+}
+
+h3 {
+  color: #DEC797;
+  
+  line-height: 1.25;
+  
+  margin: 0vw;
+  margin-left: 0.5vw;
+  margin-right: 0.5vw;
+}
+
+p {
+  color: #586B86;
+  
+  font-size: 1.95vh; /* 1vw */
+  
+  margin: 0vw;
+  margin-left: 0.5vw;
+  margin-right: 0.5vw;
+}
+
+
+
+/* Lists: */
+
+div.list-1 {
+  background-color: #1F3153;
+}
+
+div.list-2 {
+  background-color: #2A3C5D;
+}
+
+
+
+/* Section Heading: */
+
+div.heading-left {
+  text-align: right;
+  
+  width: 50vw;
+  
+  float: left;
+}
+
+div.heading-right {
+  text-align: left;
+  
+  width: 50vw;
+  
+  float: right;
+}
+
+p.heading {
+  margin-top: 0.75vw;
+  
+  width: 40vw;
+}
+
+
+
+/* Misc: */
+
+div.home-background-image {
+  width: 100vw; 
+  height: 80vh; 
+  background: url(assets/StockCodeImg.png);
+  background-position: top center; 
+  background-size: contain; 
+  background-repeat: no-repeat;
+}

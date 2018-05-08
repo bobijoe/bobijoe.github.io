@@ -6,7 +6,7 @@
   "homepage": "https://bobijoe.github.io/",
   "author": "Erik Tomten <23erik.tomten@boiseschools.net>",
   "dependencies": {
-    "p5.js": ">=0.5.6"
+    "p5.js": ">=0.5.4"
   },
   "main": "index"
 }
